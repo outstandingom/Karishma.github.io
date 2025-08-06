@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KV Designer Studio - Software Requirements Specification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        @media print {
+            body {
+                font-size: 12pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            section {
+                page-break-before: always;
+            }
+            section:first-child {
+                page-break-before: avoid;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            table, img {
+                page-break-inside: avoid;
+            }
+        }
+        .requirement-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .requirement-table th, .requirement-table td {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .requirement-table th {
+            background-color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 p-4 md:p-8 max-w-6xl mx-auto">
+    <div class="no-print flex justify-between items-center mb-8">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+            Print as PDF
+        </button>
+        <div class="text-sm text-gray-500">KV Designer Studio - SRS Document</div>
+    </div>
+
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm">
+        <!-- Cover Page -->
+        <header class="text-center mb-12">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">KV Designer Studio</h1>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Software Requirements Specification</h2>
+            <div class="border-t border-b border-gray-200 py-4 my-6">
+                <p class="text-gray-600">Version 1.0</p>
+                <p class="text-gray-600">Prepared by: [Your Name]</p>
+                <p class="text-gray-600">Date: [Current Date]</p>
+            </div>
+        </header>
+
+        <!-- Table of Contents -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-4">Table of Contents</h2>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><a href="#introduction" class="text-blue-600 hover:underline">1. Introduction</a></li>
+                <li><a href="#overall-description" class="text-blue-600 hover:underline">2. Overall Description</a></li>
+                <li><a href="#system-features" class="text-blue-600 hover:underline">3. System Features & Requirements</a></li>
+                <li><a href="#external-interfaces" class="text-blue-600 hover:underline">4. External Interface Requirements</a></li>
+                <li><a href="#appendices" class="text-blue-600 hover:underline">5. Appendices</a></li>
+            </ul>
+        </section>
+
+        <!-- 1. Introduction -->
+        <section id="introduction" class="mb-12 page-break">
+            <h2 class="text-2xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-4">1. Introduction</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1.1 Purpose</h3>
+            <p class="mb-4">This document outlines the requirements for KV Designer Studio, a custom clothing e-commerce platform where customers can order personalized outfits. The platform will include features like customization options, order confirmation notifications, and seamless checkout.</p>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1.2 Scope</h3>
+            <p class="mb-2">The platform will include:</p>
+            <ul class="list-disc pl-5 space-y-1 mb-4">
+                <li>Custom clothing design interface (fabric, measurements, style selection)</li>
+                <li>Product catalog (pre-designed and customizable outfits)</li>
+                <li>User accounts (order history, saved designs)</li>
+                <li>Admin panel (order management, inventory tracking)</li>
+                <li>Automated order confirmation (email/SMS)</li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1.3 Definitions & Abbreviations</h3>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td>SRS</td>
+                    <td>Software Requirements Specification</td>
+                </tr>
+                <tr>
+                    <td>UI/UX</td>
+                    <td>User Interface/User Experience</td>
+                </tr>
+                <tr>
+                    <td>CRM</td>
+                    <td>Customer Relationship Management</td>
+                </tr>
+                <tr>
+                    <td>CMS</td>
+                    <td>Content Management System</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 2. Overall Description -->
+        <section id="overall-description" class="mb-12 page-break">
+            <h2 class="text-2xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-4">2. Overall Description</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2.1 Product Perspective</h3>
+            <p class="mb-4">KV Designer Studio will be a custom fashion e-commerce platform where users can:</p>
+            <ul class="list-disc pl-5 space-y-1 mb-4">
+                <li>Browse pre-designed outfits</li>
+                <li>Customize fabrics, colors, and measurements</li>
+                <li>Place orders and receive real-time confirmations</li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2.2 User Classes</h3>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <th>User Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Customers</td>
+                    <td>Browse, customize, and order outfits</td>
+                </tr>
+                <tr>
+                    <td>Tailors/Designers</td>
+                    <td>Manage custom orders and measurements</td>
+                </tr>
+                <tr>
+                    <td>Admin</td>
+                    <td>Oversee inventory, orders, and customer support</td>
+                </tr>
+            </table>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2.3 Operating Environment</h3>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <th>Component</th>
+                    <th>Technology</th>
+                </tr>
+                <tr>
+                    <td>Frontend</td>
+                    <td>React.js / Next.js (for dynamic customization)</td>
+                </tr>
+                <tr>
+                    <td>Backend</td>
+                    <td>Node.js (Express) / Django</td>
+                </tr>
+                <tr>
+                    <td>Database</td>
+                    <td>PostgreSQL / Firebase (for real-time updates)</td>
+                </tr>
+                <tr>
+                    <td>Hosting</td>
+                    <td>AWS / Vercel</td>
+                </tr>
+                <tr>
+                    <td>Payment Gateway</td>
+                    <td>Razorpay / Stripe</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 3. System Features & Requirements -->
+        <section id="system-features" class="mb-12 page-break">
+            <h2 class="text-2xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-4">3. System Features & Requirements</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">3.1 Functional Requirements</h3>
+            
+            <h4 class="font-bold text-gray-800 mt-4 mb-2">FR1: Custom Clothing Designer</h4>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <td>FR1.1</td>
+                    <td>Allow users to:
+                        <ul class="list-disc pl-5 mt-1">
+                            <li>Select fabric, color, and patterns</li>
+                            <li>Input body measurements (manual/form-based)</li>
+                            <li>Preview 3D mockups (if feasible)</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>FR1.2</td>
+                    <td>Save custom designs for future orders</td>
+                </tr>
+            </table>
+            
+            <h4 class="font-bold text-gray-800 mt-4 mb-2">FR2: Order Management</h4>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <td>FR2.1</td>
+                    <td>Customers receive confirmation emails/SMS post-order</td>
+                </tr>
+                <tr>
+                    <td>FR2.2</td>
+                    <td>Tailors receive order details with specifications</td>
+                </tr>
+                <tr>
+                    <td>FR2.3</td>
+                    <td>Admin dashboard for tracking order status</td>
+                </tr>
+            </table>
+            
+            <h4 class="font-bold text-gray-800 mt-4 mb-2">FR3: Checkout & Payments</h4>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <td>FR3.1</td>
+                    <td>Multiple payment options (UPI, Cards, EMI)</td>
+                </tr>
+                <tr>
+                    <td>FR3.2</td>
+                    <td>Secure checkout with OTP verification</td>
+                </tr>
+            </table>
+            
+            <h4 class="font-bold text-gray-800 mt-4 mb-2">FR4: Notifications</h4>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <td>FR4.1</td>
+                    <td>Automated alerts for:
+                        <ul class="list-disc pl-5 mt-1">
+                            <li>Order confirmation</li>
+                            <li>Shipping updates</li>
+                            <li>Delivery completion</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">3.2 Non-Functional Requirements</h3>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <th>Requirement</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Performance</td>
+                    <td>&lt;2s page load, handle 5000+ concurrent users</td>
+                </tr>
+                <tr>
+                    <td>Security</td>
+                    <td>End-to-end encryption, GDPR compliance</td>
+                </tr>
+                <tr>
+                    <td>Scalability</td>
+                    <td>Cloud-based, auto-scaling infrastructure</td>
+                </tr>
+                <tr>
+                    <td>Usability</td>
+                    <td>Mobile-first design, intuitive customization UI</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 4. External Interface Requirements -->
+        <section id="external-interfaces" class="mb-12 page-break">
+            <h2 class="text-2xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-4">4. External Interface Requirements</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">4.1 User Interface (UI)</h3>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <th>Screen</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Homepage</td>
+                    <td>Featured designs + customization CTA</td>
+                </tr>
+                <tr>
+                    <td>Design Studio</td>
+                    <td>Interactive fabric/measurement selector</td>
+                </tr>
+                <tr>
+                    <td>Checkout</td>
+                    <td>Minimal steps, saved addresses</td>
+                </tr>
+            </table>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">4.2 APIs & Integrations</h3>
+            <table class="requirement-table mb-4">
+                <tr>
+                    <th>Service</th>
+                    <th>Provider</th>
+                </tr>
+                <tr>
+                    <td>Payment Gateway</td>
+                    <td>Razorpay/Stripe</td>
+                </tr>
+                <tr>
+                    <td>SMS/Email</td>
+                    <td>Twilio / SendGrid</td>
+                </tr>
+                <tr>
+                    <td>Analytics</td>
+                    <td>Google Analytics + Hotjar</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 5. Appendices -->
+        <section id="appendices" class="mb-12">
+            <h2 class="text-2xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-4">5. Appendices</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">5.1 Mockups/Wireframes</h3>
+            <p class="mb-4 italic">(Attach Figma/Adobe XD links here)</p>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">5.2 Assumptions & Dependencies</h3>
+            <ul class="list-disc pl-5 space-y-1 mb-4">
+                <li>Tailors can manually adjust measurements if needed</li>
+                <li>Real-time inventory updates to prevent overselling</li>
+            </ul>
+        </section>
+
+        <!-- Approval Section -->
+        <section class="mt-12 page-break">
+            <h2 class="text-2xl font-bold text-blue-800 border-b border-blue-200 pb-2 mb-6">Approval</h2>
+            <table class="requirement-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Signature</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>[Product Owner]</td>
+                    <td>Approver</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>[Developer]</td>
+                    <td>Reviewer</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        // Add current date to cover page
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const dateString = today.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            const dateElements = document.querySelectorAll('[data-current-date]');
+            dateElements.forEach(el => {
+                el.textContent = dateString;
+            });
+        });
+    </script>
+</body>
+</html>
